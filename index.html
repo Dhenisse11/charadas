@@ -176,7 +176,7 @@ function end(win){
  R.classList.add("on",win?"win":"lose");
  $("rico").textContent=win?"🎉":"🧂";
  $("rtxt").textContent=win?"¡La sal está de tu lado!":"¡Estás salad@!";
- $("prize").innerHTML=(win?"Ganaste: ":"Lo sentimos: ")+p[0]+" "+p[1]+(p[2]?"<small>"+p[2]+" · muéstrale esta pantalla al staff</small>":"<small>muéstrale esta pantalla al staff</small>");
+ $("prize").innerHTML=win?"Ganaste: ":"Lo sentimos: "+p[0]+" "+p[1]+(p[2]?"<small>"+p[2]+" · muéstrale esta pantalla al staff</small>":"<small>muéstrale esta pantalla al staff</small>");
  buzz(win?[80,60,80]:200);
  if(win){beep(880);for(var i=0;i<26;i++){(function(i){setTimeout(function(){var s=document.createElement("span");s.className="salt";s.textContent=i%3?"✨":"🧂";s.style.left=Math.random()*100+"vw";document.body.appendChild(s);setTimeout(function(){s.remove()},2500)},i*70)})(i)}}
 }
