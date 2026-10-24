@@ -119,11 +119,10 @@ header .right{display:flex;align-items:center;gap:8px}
 (function(){
 var RETOS=[
 ["🥣","Sopa sin sal"],
-["🍟","Papas fritas con mucha sal"],
+["🍟","Papas fritas saladas"],
 ["☕","Café con sal"],
 ["🩹","Sal en la herida"],
-["👨‍🍳","Chef probando su comida"],
-["🍎","Fruta con sal"],67
+["🍎","Fruta con sal"],
 ["🍿","Cotufas saladas"],
 ["🥜","Maní salado"],
 ["🍋","Limón con sal"],
@@ -139,11 +138,12 @@ var RETOS=[
 ["🥑","Aguacate con sal"],
 ["🥭","Mango con sal"],
 ["🌭","Perro caliente sin sal"],
+["🍔","Hamburguesa sin sal"],
 ["🫓","Arepa sin sal"],
 ["🥟","Empanada sin sal"]
 ];
-var GANA=[["🍪","Galleta gratis"]];
-var PIERDE=[["😔","Intenta de nuevo"]];
+var GANA=[["🍪","Galleta Gratis","de Caramelo Salado"],""];
+var PIERDE=[["😔","Lo sentimos"]];
 var T=30,C=276.46,deck=[],left=T,tm=null,state="idle",snd=true,st={w:0,l:0};
 var W={0:1,1:2,2:3,3:3,4:3};
 try{st=JSON.parse(localStorage.getItem("ss")||"")||st}catch(e){}
@@ -176,7 +176,7 @@ function end(win){
  R.classList.add("on",win?"win":"lose");
  $("rico").textContent=win?"🎉":"🧂";
  $("rtxt").textContent=win?"¡La sal está de tu lado!":"¡Estás salad@!";
- $("prize").innerHTML=win?"Ganaste: ":"Lo sentimos: "+p[0]+" "+p[1]+(p[2]?"<small>"+p[2]+" · muéstrale esta pantalla al staff</small>":"<small>muéstrale esta pantalla al staff</small>";
+ $("prize").innerHTML=(win?"Ganaste: ":"Lo sentimos: ")+p[0]+" "+p[1]+(p[2]?"<small>"+p[2]+" · muéstrale esta pantalla al staff</small>":"<small>muéstrale esta pantalla al staff</small>");
  buzz(win?[80,60,80]:200);
  if(win){beep(880);for(var i=0;i<26;i++){(function(i){setTimeout(function(){var s=document.createElement("span");s.className="salt";s.textContent=i%3?"✨":"🧂";s.style.left=Math.random()*100+"vw";document.body.appendChild(s);setTimeout(function(){s.remove()},2500)},i*70)})(i)}}
 }
