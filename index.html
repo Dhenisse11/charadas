@@ -35,7 +35,7 @@ main{flex:1;min-height:0;display:grid;gap:clamp(10px,2vw,22px);padding:6px clamp
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.6vw,14px)}
 .yes{background:var(--ok);color:#06301a}.no{background:var(--bad);color:#3a0c07}
 .alt{background:#ffffff1f;border:2px solid #ffffff55}
-.prizes{background:#0a1530;border-radius:18px;padding:10px 6px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;text-align:center;font-size:clamp(10px,1.6vw,14px)}
+.prizes{background:#0a1530;border-radius:18px;padding:10px 6px;display:grid;grid-template-columns:1fr;gap:4px;text-align:center;font-size:clamp(10px,1.6vw,14px)}
 .prizes div{padding:0 3px;border-right:1px solid #ffffff22}.prizes div:last-child{border:0}
 .prizes i{display:block;font-style:normal;font-size:clamp(20px,3.6vw,30px)}
 .prizes strong{color:var(--yel);display:block;font-size:1.15em}
@@ -142,15 +142,15 @@ var RETOS=[
 ["🫓","Arepa sin sal"],
 ["🥟","Empanada sin sal"]
 ];
-var GANA=[["🍪","Galleta Gratis","de Caramelo Salado"],""];
-var PIERDE=[["😔","Lo sentimos","Intente de nuevo"],""];
+var GANA=[["🍪","Galleta Gratis","de Caramelo Salado"]];
+var PIERDE=[["😔","Lo sentimos","Intente de nuevo"]];
 var T=30,C=276.46,deck=[],left=T,tm=null,state="idle",snd=true,st={w:0,l:0};
-var W={0:1,1:2,2:3,3:3,4:3};
+var W={0:1};
 try{st=JSON.parse(localStorage.getItem("ss")||"")||st}catch(e){}
 function $(i){return document.getElementById(i)}
 function save(){$("sw").textContent=st.w;$("sl").textContent=st.l;try{localStorage.setItem("ss",JSON.stringify(st))}catch(e){}}
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
-function wpick(){var s=0,k;for(k in W)s+=W[k];var r=Math.random()*s;for(k in W){r-=W[k];if(r<0)return GANA[k]}return GANA[4]}
+function wpick(){var s=0,k;for(k in W)s+=W[k];var r=Math.random()*s;for(k in W){r-=W[k];if(r<0)return GANA[k]}return GANA[0]}
 function next(){if(!deck.length){deck=RETOS.slice().sort(function(){return Math.random()-.5})}return deck.pop()}
 function beep(f){if(!snd)return;try{var A=window.AudioContext||window.webkitAudioContext,c=new A(),o=c.createOscillator(),g=c.createGain();o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.12)}catch(e){}}
 function buzz(p){try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
